@@ -91,6 +91,8 @@ typedef struct _ALLEGRO_TIMER ALLEGRO_TIMER;
 typedef struct _ALLEGRO_EVENT_SOURCE ALLEGRO_EVENT_SOURCE;
 typedef struct _ALLEGRO_DISPLAY ALLEGRO_DISPLAY;
 typedef struct _ALLEGRO_JOYSTICK ALLEGRO_JOYSTICK;
+typedef struct _ALLEGRO_KEYBOARD_STATE ALLEGRO_KEYBOARD_STATE;
+typedef struct _ALLEGRO_BITMAP ALLEGRO_BITMAP;
 
 
 struct _ALLEGRO_EVENT
@@ -105,8 +107,6 @@ struct _ALLEGRO_EVENT
    struct _ALLEGRO_JOYSTICK_EVENT joystick;
 };
 
-extern bool al_install_system(int version, int (*atexit_ptr)(void (*)(void)));
-extern void al_destroy_timer(ALLEGRO_TIMER *timer);
 extern ALLEGRO_DISPLAY *al_create_display(int w, int h);
 extern void al_destroy_display(ALLEGRO_DISPLAY *display);
 extern void al_identity_transform(ALLEGRO_TRANSFORM* trans);
@@ -118,11 +118,12 @@ extern ALLEGRO_EVENT_QUEUE* al_create_event_queue(void);
 extern void al_wait_for_event(ALLEGRO_EVENT_QUEUE*, ALLEGRO_EVENT *ret_event);
 extern void al_init_timeout(ALLEGRO_TIMEOUT *timeout, double seconds);
 extern bool al_wait_for_event_until(ALLEGRO_EVENT_QUEUE *queue, ALLEGRO_EVENT *ret_event, ALLEGRO_TIMEOUT *timeout);
-extern ALLEGRO_TIMER* al_create_timer(double speed_secs);
 extern void al_register_event_source(ALLEGRO_EVENT_QUEUE*, ALLEGRO_EVENT_SOURCE*);
 extern ALLEGRO_EVENT_SOURCE* al_get_display_event_source(ALLEGRO_DISPLAY *display);
-extern ALLEGRO_EVENT_SOURCE* al_get_timer_event_source(ALLEGRO_TIMER *timer);
-extern void al_start_timer(ALLEGRO_TIMER *timer);
-extern bool al_install_keyboard(void);
-extern ALLEGRO_EVENT_SOURCE *al_get_keyboard_event_source(void);
 extern void al_destroy_event_queue(ALLEGRO_EVENT_QUEUE*);
+
+#include "system.h"
+#include "timer.h"
+#include "mouse.h"
+#include "keyboard.h"
+#include "joystick.h"
