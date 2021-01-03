@@ -1,6 +1,7 @@
 {
     "name": "allegro-php/allegro",
     "description": "PHP bindings to the allegro.",
+    "license": "MIT",
     "keywords": [
         "ui",
         "php",
