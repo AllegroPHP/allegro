@@ -27,8 +27,6 @@ $event_queue = $allegro->al_create_event_queue();
 
 $allegro->al_install_keyboard();
 
-$timer = $allegro->al_create_timer(1.0 / 60);
-
 $allegro->al_register_event_source($event_queue, $allegro->al_get_keyboard_event_source());
 $allegro->al_register_event_source($event_queue, $allegro->al_get_display_event_source($display));
 $allegro->al_register_event_source($event_queue, $allegro->al_get_timer_event_source($timer));
