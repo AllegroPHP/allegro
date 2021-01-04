@@ -1,5 +1,6 @@
 typedef unsigned long int __uint64_t;
 typedef unsigned int ALLEGRO_EVENT_TYPE;
+typedef long int time_t;
 
 
 struct _ALLEGRO_DISPLAY_EVENT
@@ -107,23 +108,23 @@ struct _ALLEGRO_EVENT
    struct _ALLEGRO_JOYSTICK_EVENT joystick;
 };
 
-extern ALLEGRO_DISPLAY *al_create_display(int w, int h);
-extern void al_destroy_display(ALLEGRO_DISPLAY *display);
-extern void al_identity_transform(ALLEGRO_TRANSFORM* trans);
-extern void al_rotate_transform(ALLEGRO_TRANSFORM* trans, float theta);
-extern void al_translate_transform(ALLEGRO_TRANSFORM* trans, float x, float y);
-extern void al_use_transform(const ALLEGRO_TRANSFORM* trans);
-extern const ALLEGRO_TRANSFORM* al_get_current_transform(void);
-extern ALLEGRO_EVENT_QUEUE* al_create_event_queue(void);
-extern void al_wait_for_event(ALLEGRO_EVENT_QUEUE*, ALLEGRO_EVENT *ret_event);
-extern void al_init_timeout(ALLEGRO_TIMEOUT *timeout, double seconds);
-extern bool al_wait_for_event_until(ALLEGRO_EVENT_QUEUE *queue, ALLEGRO_EVENT *ret_event, ALLEGRO_TIMEOUT *timeout);
-extern void al_register_event_source(ALLEGRO_EVENT_QUEUE*, ALLEGRO_EVENT_SOURCE*);
-extern ALLEGRO_EVENT_SOURCE* al_get_display_event_source(ALLEGRO_DISPLAY *display);
-extern void al_destroy_event_queue(ALLEGRO_EVENT_QUEUE*);
-
 #include "system.h"
+#include "file_io.h"
+#include "filesystem.h"
+#include "config.h"
+#include "fixed_point_math.h"
+#include "graphics.h"
+#include "display.h"
+#include "event.h"
 #include "timer.h"
 #include "mouse.h"
 #include "keyboard.h"
 #include "joystick.h"
+#include "memory.h"
+#include "path.h"
+#include "threads.h"
+#include "transformations.h"
+#include "utf-8.h"
+#include "state.h"
+#include "time.h"
+#include "miscellaneous.h"

@@ -1,0 +1,18 @@
+extern ALLEGRO_EVENT_QUEUE *al_create_event_queue(void);
+extern void al_init_user_event_source(ALLEGRO_EVENT_SOURCE *src);
+extern void al_destroy_event_queue(ALLEGRO_EVENT_QUEUE *queue);
+extern void al_destroy_user_event_source(ALLEGRO_EVENT_SOURCE *src);
+extern bool al_drop_next_event(ALLEGRO_EVENT_QUEUE *queue);
+extern bool al_emit_user_event(ALLEGRO_EVENT_SOURCE *src, ALLEGRO_EVENT *event, void (*dtor)(ALLEGRO_USER_EVENT *));
+extern bool al_is_event_queue_empty(ALLEGRO_EVENT_QUEUE *queue);
+extern void al_flush_event_queue(ALLEGRO_EVENT_QUEUE *queue);
+extern intptr_t al_get_event_source_data(const ALLEGRO_EVENT_SOURCE *source);
+extern bool al_get_next_event(ALLEGRO_EVENT_QUEUE *queue, ALLEGRO_EVENT *ret_event);
+extern bool al_peek_next_event(ALLEGRO_EVENT_QUEUE *queue, ALLEGRO_EVENT *ret_event);
+extern void al_register_event_source(ALLEGRO_EVENT_QUEUE *queue, ALLEGRO_EVENT_SOURCE *source);
+extern void al_set_event_source_data(ALLEGRO_EVENT_SOURCE *source, intptr_t data);
+extern void al_unref_user_event(ALLEGRO_USER_EVENT *event);
+extern void al_unregister_event_source(ALLEGRO_EVENT_QUEUE *queue, ALLEGRO_EVENT_SOURCE *source);
+extern void al_wait_for_event(ALLEGRO_EVENT_QUEUE *queue, ALLEGRO_EVENT *ret_event);
+extern bool al_wait_for_event_timed(ALLEGRO_EVENT_QUEUE *queue, ALLEGRO_EVENT *ret_event, float secs);
+extern bool al_wait_for_event_until(ALLEGRO_EVENT_QUEUE *queue, ALLEGRO_EVENT *ret_event, ALLEGRO_TIMEOUT *timeout);

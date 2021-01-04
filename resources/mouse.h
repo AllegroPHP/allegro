@@ -19,6 +19,31 @@ struct _ALLEGRO_MOUSE_STATE
    struct _ALLEGRO_DISPLAY *display;
 };
 
+typedef enum ALLEGRO_SYSTEM_MOUSE_CURSOR
+{
+   ALLEGRO_SYSTEM_MOUSE_CURSOR_NONE        =  0,
+   ALLEGRO_SYSTEM_MOUSE_CURSOR_DEFAULT     =  1,
+   ALLEGRO_SYSTEM_MOUSE_CURSOR_ARROW       =  2,
+   ALLEGRO_SYSTEM_MOUSE_CURSOR_BUSY        =  3,
+   ALLEGRO_SYSTEM_MOUSE_CURSOR_QUESTION    =  4,
+   ALLEGRO_SYSTEM_MOUSE_CURSOR_EDIT        =  5,
+   ALLEGRO_SYSTEM_MOUSE_CURSOR_MOVE        =  6,
+   ALLEGRO_SYSTEM_MOUSE_CURSOR_RESIZE_N    =  7,
+   ALLEGRO_SYSTEM_MOUSE_CURSOR_RESIZE_W    =  8,
+   ALLEGRO_SYSTEM_MOUSE_CURSOR_RESIZE_S    =  9,
+   ALLEGRO_SYSTEM_MOUSE_CURSOR_RESIZE_E    = 10,
+   ALLEGRO_SYSTEM_MOUSE_CURSOR_RESIZE_NW   = 11,
+   ALLEGRO_SYSTEM_MOUSE_CURSOR_RESIZE_SW   = 12,
+   ALLEGRO_SYSTEM_MOUSE_CURSOR_RESIZE_SE   = 13,
+   ALLEGRO_SYSTEM_MOUSE_CURSOR_RESIZE_NE   = 14,
+   ALLEGRO_SYSTEM_MOUSE_CURSOR_PROGRESS    = 15,
+   ALLEGRO_SYSTEM_MOUSE_CURSOR_PRECISION   = 16,
+   ALLEGRO_SYSTEM_MOUSE_CURSOR_LINK        = 17,
+   ALLEGRO_SYSTEM_MOUSE_CURSOR_ALT_SELECT  = 18,
+   ALLEGRO_SYSTEM_MOUSE_CURSOR_UNAVAILABLE = 19,
+   ALLEGRO_NUM_SYSTEM_MOUSE_CURSORS
+} ALLEGRO_SYSTEM_MOUSE_CURSOR;
+
 typedef struct _ALLEGRO_MOUSE_STATE ALLEGRO_MOUSE_STATE;
 typedef struct _ALLEGRO_MOUSE_CURSOR ALLEGRO_MOUSE_CURSOR;
 
@@ -39,3 +64,9 @@ extern ALLEGRO_EVENT_SOURCE *al_get_mouse_event_source(void);
 extern ALLEGRO_MOUSE_CURSOR *al_create_mouse_cursor(ALLEGRO_BITMAP *bmp, int x_focus, int y_focus);
 extern void al_destroy_mouse_cursor(ALLEGRO_MOUSE_CURSOR *cursor);
 extern bool al_set_mouse_cursor(ALLEGRO_DISPLAY *display, ALLEGRO_MOUSE_CURSOR *cursor);
+extern bool al_set_system_mouse_cursor(ALLEGRO_DISPLAY *display, ALLEGRO_SYSTEM_MOUSE_CURSOR cursor_id);
+extern bool al_get_mouse_cursor_position(int *ret_x, int *ret_y);
+extern bool al_hide_mouse_cursor(ALLEGRO_DISPLAY *display);
+extern bool al_show_mouse_cursor(ALLEGRO_DISPLAY *display);
+extern bool al_grab_mouse(ALLEGRO_DISPLAY *display);
+extern bool al_ungrab_mouse(void);
