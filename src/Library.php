@@ -10,7 +10,7 @@ class Library extends BaseLibrary
 {
     private const LIBRARY_LINUX = 'liballegro.so';
 
-    private string $version = '0.1.0';
+    private string $version = '0.1.2';
 
     public function getName(): string
     {

@@ -1,3 +1,9 @@
+typedef struct _ALLEGRO_TRANSFORM ALLEGRO_TRANSFORM;
+
+struct _ALLEGRO_TRANSFORM {
+   float m[4][4];
+};
+
 void al_copy_transform(ALLEGRO_TRANSFORM *dest, const ALLEGRO_TRANSFORM *src);
 void al_use_transform(const ALLEGRO_TRANSFORM *trans);
 const ALLEGRO_TRANSFORM *al_get_current_transform(void);
