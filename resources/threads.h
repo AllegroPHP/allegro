@@ -1,0 +1,22 @@
+typedef struct _ALLEGRO_THREAD ALLEGRO_THREAD;
+typedef struct _ALLEGRO_MUTEX ALLEGRO_MUTEX;
+typedef struct _ALLEGRO_COND ALLEGRO_COND;
+
+extern ALLEGRO_THREAD *al_create_thread(void *(*proc)(ALLEGRO_THREAD *thread, void *arg), void *arg);
+extern void al_start_thread(ALLEGRO_THREAD *thread);
+extern void al_join_thread(ALLEGRO_THREAD *thread, void **ret_value);
+extern void al_set_thread_should_stop(ALLEGRO_THREAD *thread);
+extern bool al_get_thread_should_stop(ALLEGRO_THREAD *thread);
+extern void al_destroy_thread(ALLEGRO_THREAD *thread);
+extern void al_run_detached_thread(void *(*proc)(void *arg), void *arg);
+extern ALLEGRO_MUTEX *al_create_mutex(void);
+extern ALLEGRO_MUTEX *al_create_mutex_recursive(void);
+extern void al_lock_mutex(ALLEGRO_MUTEX *mutex);
+extern void al_unlock_mutex(ALLEGRO_MUTEX *mutex);
+extern void al_destroy_mutex(ALLEGRO_MUTEX *mutex);
+extern ALLEGRO_COND *al_create_cond(void);
+extern void al_destroy_cond(ALLEGRO_COND *cond);
+extern void al_wait_cond(ALLEGRO_COND *cond, ALLEGRO_MUTEX *mutex);
+extern int al_wait_cond_until(ALLEGRO_COND *cond, ALLEGRO_MUTEX *mutex, const ALLEGRO_TIMEOUT *timeout);
+extern void al_broadcast_cond(ALLEGRO_COND *cond);
+extern void al_signal_cond(ALLEGRO_COND *cond);

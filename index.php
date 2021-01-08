@@ -7,7 +7,7 @@ use AllegroPHP\Allegro\Event\Type;
 
 $allegro = Allegro::getInstance()->info->ffi;
 
-$init = $allegro->al_install_system(Allegro::getInstance()->info->version, function (){});
+$init = $allegro->al_install_system($allegro->al_get_allegro_version(), function (){});
 
 $display = $allegro->al_create_display(500, 500);
 $queue = $allegro->al_create_event_queue();
@@ -30,7 +30,6 @@ $event = $allegro->new('ALLEGRO_EVENT');
 while ($running){
     $allegro->al_wait_for_event($event_queue, FFI::addr($event));
 
-    var_dump($event->mouse);
     if ($event->type === Type::DISPLAY_CLOSE) {
         $running = false;
     }
