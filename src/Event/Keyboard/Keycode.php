@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace AllegroPHP\Allegro\Event\Keycode;
+namespace AllegroPHP\Allegro\Event\Keyboard;
 
 interface Keycode
 {
