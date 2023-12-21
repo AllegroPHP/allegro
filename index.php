@@ -2,10 +2,7 @@
 
 require __DIR__ . '/vendor/autoload.php';
 
-use AllegroPHP\Allegro\Allegro;
-use AllegroPHP\Allegro\Event\Type;
-
-$allegro = Allegro::getInstance()->info->ffi;
+$allegro = new \AllegroPHP\Allegro\Allegro();
 
 $init = $allegro->al_install_system($allegro->al_get_allegro_version(), function (){});
 
@@ -28,9 +25,9 @@ $allegro->al_register_event_source($event_queue, $allegro->al_get_timer_event_so
 $running = true;
 $event = $allegro->new('ALLEGRO_EVENT');
 while ($running){
-    $allegro->al_wait_for_event($event_queue, FFI::addr($event));
+    $allegro->al_wait_for_event($event_queue, \FFI::addr($event));
 
-    if ($event->type === Type::DISPLAY_CLOSE) {
+    if ($event->type === \AllegroPHP\Allegro\Event\Type::DISPLAY_CLOSE) {
         $running = false;
     }
 }
